@@ -19,7 +19,7 @@
       <form action="{{route('login')}}" method="post">
           @csrf
         <div class="input-group mt-3">
-          <input type="email" name="email" class="form-control" placeholder="Email" value="teste@teste.com.br" required>
+          <input type="email" name="email" class="form-control" placeholder="Email" value="" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -28,7 +28,7 @@
         </div>
         @error('email')<small class="text-danger">{{ $message }}</small>@enderror
         <div class="input-group mt-3">
-          <input type="password" name="password" class="form-control" placeholder="Senha" value="12345678" required>
+          <input type="password" name="password" class="form-control" placeholder="Senha" value="" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
