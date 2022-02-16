@@ -18,12 +18,14 @@ class TrackingController extends BaseController
 
     public function store(Request $request)
     {
-        $response = $this->requestApi('trackings', 'post', $request->all());
+        $input = $request->all();
 
+        $response = $this->requestApi('trackings', 'post', $input);
+        
         if ($response['status'] == 201) {
             return redirect()->route('trackings.index');
         } else {
-            return redirect()->back()->withError($response['message']);
+            return redirect()->back()->withInput($input)->withErrors($response['data']['data']);
         }
     }
 
@@ -36,18 +38,20 @@ class TrackingController extends BaseController
                 'tracking' => $response['data']
             ]);
         } else {
-            return redirect()->back()->withError($response['message']);
+            return redirect()->back()->withErrors($response['data']['data'] ?? '');
         }
     }
 
     public function update(Request $request, $id)
     {
+        $input = $request->all();
+
         $response = $this->requestApi('trackings/' . $id, 'put', $request->all());
 
         if ($response['status'] == 200) {
             return redirect()->route('trackings.index');
         } else {
-            return redirect()->back()->withError($response['message']);
+            return redirect()->back()->withInput($input)->withErrors($response['data']['data']);
         }
     }
 

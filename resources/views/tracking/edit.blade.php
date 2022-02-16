@@ -21,10 +21,12 @@
                     <label for="description">Descrição</label>
                     <input type="text" name="description" class="form-control" id="description" value="{{$tracking['description']}}" required>
                 </div>
+                @error('description')<small class="text-danger">{{ $message }}</small>@enderror
                 <div class="form-group">
                     <label for="url">URL</label>
                     <input type="text" name="url" class="form-control" id="url" value="{{$tracking['url']}}" required>
                 </div>
+                @error('url')<small class="text-danger">{{ $message }}</small>@enderror
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Enviar</button>

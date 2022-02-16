@@ -41,17 +41,19 @@ $('#trackings-live').DataTable({
     },
     columns: [
         { data: {description: "description", url: "url", last_query: "last_query"}, class: "cell", render: function (data) {
-            let text = `${data.description}<br>${data.url}<br>Última atualização: ${data.last_query}`;
+            let lastTime = data.last_query == null ? '-' : data.last_query;
+            let text = `${data.description}<br>${data.url}<br>Última atualização: ${lastTime}`;
             return text;
         }},
         { data: "code", class: "cell text-center", render: function (data) {
             let img = "";
             if (data == 200) {
-                img = '<img src="' + $("input[name^='green_light']").val() +  '" width="40">';
+                img = '<img src="' + $("input[name^='green_light']").val() +  '" width="40"><br>Code: ' + data;
             } else {
-                img = '<img src="' + $("input[name^='red_light']").val() +  '" width="40">';
+                let status = data == null ? '-' : data;
+                img = '<img src="' + $("input[name^='red_light']").val() +  '" width="40"><br>' + status;
             }
-            return img + '<br>Code: ' + data;
+            return img;
         }},
     ],
     drawCallback: function(settings) {

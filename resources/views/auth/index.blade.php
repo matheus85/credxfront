@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{env('APP_NAME')}}</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <link rel="stylesheet" href="{{asset('vendor/plugins/fontawesome-free/css/all.min.css')}}">
-  <link rel="stylesheet" href="{{asset('vendor/dist/css/adminlte.min.css')}}">
-</head>
+@include('layout.head')
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="card card-outline card-primary">
@@ -19,7 +9,7 @@
       <form action="{{route('login')}}" method="post">
           @csrf
         <div class="input-group mt-3">
-          <input type="email" name="email" class="form-control" placeholder="Email" value="" required>
+          <input type="email" name="email" class="form-control" placeholder="Email" autocomplete="off" value="" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -28,7 +18,7 @@
         </div>
         @error('email')<small class="text-danger">{{ $message }}</small>@enderror
         <div class="input-group mt-3">
-          <input type="password" name="password" class="form-control" placeholder="Senha" value="" required>
+          <input type="password" name="password" class="form-control" placeholder="Senha" autocomplete="off" value="" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -57,8 +47,6 @@
     </div>
   </div>
 </div>
-<script src="{{asset('vendor/plugins/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('vendor/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('vendor/dist/js/adminlte.min.js')}}"></script>
+@include('layout.imports')
 </body>
 </html>
