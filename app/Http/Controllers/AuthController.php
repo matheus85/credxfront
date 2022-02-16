@@ -19,7 +19,7 @@ class AuthController extends BaseController
     public function login(Request $request)
     {
         $response = $this->requestApiAuth($request->all(), 'login');
-        dd($response);
+        
         if ($response['status'] == 200) {
             session()->put('authenticated', time());
             session()->put('user', $response['data']['user']);
