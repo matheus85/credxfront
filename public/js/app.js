@@ -50,7 +50,7 @@ $('#trackings-live').DataTable({
             if (data == 200) {
                 img = '<img src="' + $("input[name^='green_light']").val() +  '" width="40"><br>Code: ' + data;
             } else {
-                let status = data == null ? '-' : data;
+                let status = data == null ? '-' : 'Code: ' + data;
                 img = '<img src="' + $("input[name^='red_light']").val() +  '" width="40"><br>' + status;
             }
             return img;
